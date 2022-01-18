@@ -33,7 +33,7 @@ val = 999
 Val = 9080 #대소문자 구분한다 서로 다른 변수
 
 print(val)
-print(Val);
+print(Val)
 
 My_Account_Of_Bank = 100
 은행계좌금액 = 1

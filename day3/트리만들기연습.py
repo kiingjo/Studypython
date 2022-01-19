@@ -2,7 +2,6 @@
 a = '*'
 b = "***"
 
-
 for i in list(range(1,16,2)):
     w = a*i
     print(w.center(35,' '))

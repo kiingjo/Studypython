@@ -20,7 +20,7 @@ print('사칙연산 시작')
 a, b = 4, 1
 numbers = [3,6,9] #리스트 생성
 
-try: # 예외발생
+try: # 예외발생 # try ecept사이에는 한개의 식만 웬만하면 넣는다. 무슨 except 인지 모르겠으면 일단 exceptiond을 먼저 돌린다음 나온 결과(예외)를 적어주면 된다!!
     print(f'나누기 결과 : {divide(a, b)}') # 예외는 실행을 해야 나오는 것이다. 빨간 밑줄이랑은 다르다
     res = int(numbers[1]) * 8
     num = int(input('수를 입력하세요'))

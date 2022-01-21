@@ -38,7 +38,7 @@ def getsomedata_from_membertbl(conn): # 데이터 가지오 온다
     cur.close() # 원래는 커서 실행한다음에는 cur.close()해줘야 한다
 
 def setnewmember_into_membertbl(conn,tup):
-    cur = conn.cursor()
+    cur = conn.cursor() # 실행하기 위해서 필요한 것: 커서
     query = '''SELECT ROWNUM, idx
             FROM (
                 SELECT idx FROM membertbl
@@ -46,13 +46,13 @@ def setnewmember_into_membertbl(conn,tup):
                     ) 
             WHERE ROWNUM = 1'''
     cur.execute(query)
-    idx = cur.fetchone()
+    idx = cur.fetchone() # 한줄씩 받아온다.
     if idx is None:
         idx = 0
     else:
-        idx = idx[1]
+        idx = idx[1] # 인덱스 1은 오라클이니까!
 
-    intup = (idx +1, tup[0], tup[1], tup[2], tup[3])
+    intup = (idx +1, tup[0], tup[1], tup[2], tup[3]) # 얘들은 input으로 받는다 
     
     query = '''INSERT INTO membertbl 
             (idx, names, levels, userid, password)
@@ -94,51 +94,50 @@ if __name__=='__main__':
     # 함수 호출하기
     scott_con = myconn()
 
-    # # 1. divtbl에서 데이터 조회
+    # 1. divtbl에서 데이터 조회
     
-    # print('책 장르 정보조회')
-    # getalldata_from_divtbl(scott_con)
+    print('책 장르 정보조회')
+    getalldata_from_divtbl(scott_con)
     
-    # # 2. divtbl에 새로운 데이터 입력
-    # print('책 장르 정보입력')
+    # 2. divtbl에 새로운 데이터 입력
+    print('책 장르 정보입력')
 
-    # division = input('구분코드 입력:')
-    # names = input('장르명 입력:')
-    # tup = (division,names)
-    # setdata_into_divtbl(scott_con,tup)
+    division = input('구분코드 입력:')
+    names = input('장르명 입력:')
+    tup = (division,names)
+    setdata_into_divtbl(scott_con,tup)
 
-    # print('정보 입력 성공')
+    print('정보 입력 성공')
 
 
+     # 3. membertbl에서 데이터 조회
 
-    # # 3. membertbl에서 데이터 조회
-
-    # print('회원정보 조회')
-    # getsomedata_from_membertbl(scott_con)
+    print('회원정보 조회')
+    getsomedata_from_membertbl(scott_con)
 
     # 4. membertbl에 새 데이터 입력
-    # print('신규회원 입력')
-    # names = input('회원이름 입력:')
-    # levels = input('레벨입력(A~D)')
-    # userid = input('id입력(최대 20자):')
-    # password = input('패스워드입력(최대 20자):')
-    # tup = (names, levels, userid, password)
+    print('신규회원 입력')
+    names = input('회원이름 입력:')
+    levels = input('레벨입력(A~D)')
+    userid = input('id입력(최대 20자):')
+    password = input('패스워드입력(최대 20자):')
+    tup = (names, levels, userid, password)
 
-    # setnewmember_into_membertbl(scott_con,tup)
+    setnewmember_into_membertbl(scott_con,tup)
 
-    # print('성공!')
+    print('성공!')
 
     # 5. membertbl 새 데이터를 수정
 
-    # print('기존회원 수정')
-    # idx = input('변경회원 번호:')
-    # addr = input('주소입력 :')
-    # mobile = input('폰번호입력(-포함):')
-    # email = input('이메일 입력:').upper()
+    print('기존회원 수정')
+    idx = input('변경회원 번호:')
+    addr = input('주소입력 :')
+    mobile = input('폰번호입력(-포함):')
+    email = input('이메일 입력:').upper()
     
-    # tup = (addr, mobile, email, idx) # idx를 가장 마지막에 넣는다
-    # setchangemember_from_membertbl(scott_con,tup)
-    # print('기존 회원 수정완료')
+    tup = (addr, mobile, email, idx) # idx를 가장 마지막에 넣는다
+    setchangemember_from_membertbl(scott_con,tup)
+    print('기존 회원 수정완료')
 
 
     # 6. divtbl에 임의 데이터 삭제

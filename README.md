@@ -1,6 +1,8 @@
 # Studypython
 빅데이터 반 파이썬 학습 리포지토리
 
+![python](https://jacoblee.io/content/images/2021/08/4e105f96750899.5eb54f337fb8e-17.png)
+
 ### 1일차
 - 프로그래밍 이해
 - 파이썬 설치, Visual studio code 설치
